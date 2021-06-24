@@ -4,6 +4,7 @@ import eu.matfx.changeConfig.ChangeGitConfigTab;
 import eu.matfx.interfaces.ITabView;
 import eu.matfx.polygon.PolygonConverterTab;
 import eu.matfx.roundrectangle.RoundRectangleTab;
+import eu.matfx.stop.StopConverterTab;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -28,7 +29,7 @@ public class DevelopmentTool extends Application
 			
 			ChangeGitConfigTab changeConfigTab = new ChangeGitConfigTab(primaryStage);
 			
-			tabPane.getTabs().addAll(changeConfigTab, new PolygonConverterTab(), new RoundRectangleTab());
+			tabPane.getTabs().addAll(changeConfigTab, new PolygonConverterTab(), new RoundRectangleTab(), new StopConverterTab());
 			
 			root.setCenter(tabPane);
 			
