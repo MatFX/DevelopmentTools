@@ -1,5 +1,6 @@
 package eu.matfx.roundrectangle;
 
+import eu.matfx.changeConfig.ConfigResourceLocation;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -47,9 +48,8 @@ public class RoundRectangleContent extends BorderPane
         HBox initLinie = new HBox(5);
         initLinie.setPadding(new Insets(5,5,5,5));
         
-        //TODO read out
-        totalWidthFromSVG = new TextField("150.0");
-        totalHeightFromSVG = new TextField("60.0");
+        totalWidthFromSVG = new TextField(ConfigResourceLocation.getTotal_Width());
+        totalHeightFromSVG = new TextField(ConfigResourceLocation.getTotal_Height());
         
         Button convertButton = new Button("Convert values");
         convertButton.setOnAction(new EventHandler<ActionEvent>(){
@@ -187,6 +187,14 @@ public class RoundRectangleContent extends BorderPane
 		
 		
 		
+	}
+
+
+	
+	public void saveSize() 
+	{
+		ConfigResourceLocation.setTotal_Width(totalWidthFromSVG.getText());
+		ConfigResourceLocation.setTotal_Height(totalHeightFromSVG.getText());
 	}
 
 }

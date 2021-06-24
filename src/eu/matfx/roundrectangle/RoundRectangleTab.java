@@ -23,6 +23,7 @@ public class RoundRectangleTab extends Tab implements ITabView
 
 	@Override
 	public void releaseTabView() {
+		content.saveSize();
 		this.setContent(null);
 	}
 

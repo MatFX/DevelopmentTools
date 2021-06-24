@@ -19,11 +19,15 @@ public class ConfigResourceLocation
 	
 	private Properties configProperties = null;
 	
-	private static final String PFAD_ZU_DAT = "/config/";
+	private static final String PATH_TO_FILE = "/config/";
 	
-	private static final String DATEI_BEZEZEICHNUNG = "configresource.properties";
+	private static final String FILE_NAME = "configresource.properties";
 	
 	private static final String CONFIG_GIT_PATH = "gitResource";
+	
+	private static final String TOTAL_WIDTH = "total_w";
+	
+	private static final String TOTAL_HEIGHT = "total_h";
 	
 	private static void createInstance() 
 	{
@@ -44,7 +48,7 @@ public class ConfigResourceLocation
 	}
 	
 	/** 
-	 * Zust�ndig f�r das initiale Laden der Datei, noch keine Datei vorhanden dann eine anlegen
+	 * load file
 	 */
 	private void loadProperty() 
 	{
@@ -56,7 +60,7 @@ public class ConfigResourceLocation
 		    {
 				configProperties = new Properties();
 				file = new File("");
-				file = new File(file.getAbsolutePath() + PFAD_ZU_DAT + DATEI_BEZEZEICHNUNG);
+				file = new File(file.getAbsolutePath() + PATH_TO_FILE + FILE_NAME);
 				
 				if(file.exists())
 				{
@@ -75,23 +79,23 @@ public class ConfigResourceLocation
 		}
 	}
 	
+	/**
+	 * get the git path
+	 * @return
+	 */
 	public static String getPathToGitConfigFile()
 	{
 		createInstance();
 		return instance.configProperties.getProperty(CONFIG_GIT_PATH);
-		
 	}
 	
 	/**
-	 * pr�ft ob ein Config Pfad vorgegeben worden ist.
-	 * <br>Ist beim Start der Software einmalig aufzurufne und l�dt die evtl. vorhandene Einstellung
+	 * 
 	 * @return
 	 */
 	public static boolean isConfigPathAvailable()
 	{
 		createInstance();
-		
-		//Anschlie�end pr�fen ob die Datei vorhanden ist
 		
 		String value = instance.configProperties.getProperty(CONFIG_GIT_PATH);
 		if(value != null && value.length() > 0)
@@ -104,22 +108,10 @@ public class ConfigResourceLocation
 
 	public static void setConfigurePath(Path configurePath)
 	{
-		FileOutputStream fos = null;
 		try 
 		{
-			File file = new File("");
-			//Bevor geschrieben wird pr�fen ob Directory vorhanden ist
-			file = new File(file.getAbsoluteFile() + PFAD_ZU_DAT);
-			if(!file.exists())
-			{
-				file.mkdirs();
-			}
-			
-			file = new File("");
-			
-			
-			fos = new FileOutputStream(new File(file.getAbsolutePath() + PFAD_ZU_DAT + DATEI_BEZEZEICHNUNG));
-			//Setzen der Eigenschaften und anschlie�en sofort wegspeichern
+			FileOutputStream fos = getFileOutputStream();
+			//set the new content of the property and write file
 			instance.configProperties.setProperty(CONFIG_GIT_PATH, ""+configurePath.toString());
 			instance.configProperties.store(fos, "");
 			fos.flush();
@@ -129,6 +121,21 @@ public class ConfigResourceLocation
 		{
 			e.printStackTrace();
 		} 
+	}
+
+	private static FileOutputStream getFileOutputStream() throws FileNotFoundException 
+	{
+		File file = new File("");
+		file = new File(file.getAbsoluteFile() + PATH_TO_FILE);
+		if(!file.exists())
+		{
+			file.mkdirs();
+		}
+		
+		file = new File("");
+		
+		
+		return new FileOutputStream(new File(file.getAbsolutePath() + PATH_TO_FILE + FILE_NAME));
 	}
 
 	public static List<String> getGitConfigFiles() 
@@ -193,12 +200,7 @@ public class ConfigResourceLocation
 	{
 		File f  = new File(ConfigResourceLocation.getPathToGitConfigFile()+File.separator+".gitconfig");
 		if(f.exists())
-		{
 			f.delete();
-			System.out.println("lösche f");
-		}
-		else
-			System.out.println("gibt es nicht");
 		
 		File newFile = new File(ConfigResourceLocation.getPathToGitConfigFile()+File.separator+".gitconfig");
 		
@@ -213,8 +215,53 @@ public class ConfigResourceLocation
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static String getTotal_Width()
+	{
+		createInstance();
+		return instance.configProperties.getProperty(TOTAL_WIDTH, "150");
+	}
+	
+	public static void setTotal_Width(String width)
+	{
+		try 
+		{
+			FileOutputStream fos = getFileOutputStream();
+			//set the new content of the property and write file
+			instance.configProperties.setProperty(TOTAL_WIDTH, width);
+			instance.configProperties.store(fos, "");
+			fos.flush();
+			fos.close();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		} 
+	}
+	
+	public static String getTotal_Height()
+	{
+		createInstance();
+		return instance.configProperties.getProperty(TOTAL_HEIGHT, "60");
+	}
+	
+	public static void setTotal_Height(String height)
+	{
 		
-		
+		try 
+		{
+			FileOutputStream fos = getFileOutputStream();
+			//set the new content of the property and write file
+			instance.configProperties.setProperty(TOTAL_HEIGHT, height);
+			instance.configProperties.store(fos, "");
+			fos.flush();
+			fos.close();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		} 
 	}
 	
 

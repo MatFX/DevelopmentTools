@@ -38,8 +38,6 @@ public class StopConverterContent extends BorderPane
 {
 	private TextArea importArea, exportArea;
 	
-
-	
 	public StopConverterContent() 
 	{
 		
@@ -55,22 +53,8 @@ public class StopConverterContent extends BorderPane
 			{
 				exportArea.clear();
 				
-				//Der wird dann später in der anderen textarea ausgeben
+				//init from string builder 
 				StringBuilder ausgabe = new StringBuilder("Stop[] stopArray = new Stop[]{\n");
-				
-			
-				
-				
-				/* Test ob xml objekt korrekt sind
-				StopList toWrite = new StopList();
-				
-				List<StopValue> test = new ArrayList<StopValue>();
-				test.add(new StopValue("offsetEintrag1", "styleEintrag1"));
-				test.add(new StopValue("offsetEintrag2", "styleEintrag2"));
-				toWrite.setStopList(test);
-				
-				writeObjectToFile(toWrite);
-				*/
 				
 				//import the string from the text area and convert the values
 				StringBuilder sb = new StringBuilder("");

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+import eu.matfx.changeConfig.ConfigResourceLocation;
 import eu.matfx.helper.GenericPair;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -63,10 +64,9 @@ public class PolygonConverterContent extends BorderPane
         vBox.setPadding(new Insets(5,5,5,5));
         HBox initLinie = new HBox(5);
         initLinie.setPadding(new Insets(5,5,5,5));
-        //TODO import values
-        //Breite/Hoehe kann ver�ndert werden; �nderung werden �bernommen durch button resize
-        totalWidthFromSVG = new TextField("150.0");
-        totalHeightFromSVG = new TextField("60.0");
+      
+        totalWidthFromSVG = new TextField(ConfigResourceLocation.getTotal_Width());
+        totalHeightFromSVG = new TextField(ConfigResourceLocation.getTotal_Height());
         
         
         Button importButton = new Button("Import/resize");
@@ -322,6 +322,13 @@ public class PolygonConverterContent extends BorderPane
 		calculatedResultTable.getItems().clear();
 		svgValueTable.getItems().clear();
     }
+
+
+	public void saveSize() 
+	{
+		ConfigResourceLocation.setTotal_Width(totalWidthFromSVG.getText());
+		ConfigResourceLocation.setTotal_Height(totalHeightFromSVG.getText());
+	}
 
     
   

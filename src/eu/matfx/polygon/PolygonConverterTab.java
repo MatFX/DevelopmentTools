@@ -24,7 +24,10 @@ public class PolygonConverterTab extends Tab implements ITabView
 	}
 
 	@Override
-	public void releaseTabView() {
+	public void releaseTabView() 
+	{
+		content.saveSize();
+		
 		this.setContent(null);
 		
 	}
