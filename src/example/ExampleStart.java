@@ -40,7 +40,6 @@ public class ExampleStart extends Application {
 		 primaryStage.setWidth(500);
 		 primaryStage.setHeight(350);
 		 primaryStage.show();
-		 
 		
 	}
 	
