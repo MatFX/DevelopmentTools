@@ -38,8 +38,19 @@ By clicking on the "Convert values" button, the code snippet will be created and
 
 The fields total width and height have the same background as in the other dialog. Accordingly, they must be filled 
 with the values from the base component.
-The raw data points are to be inserted in the lower left text area. With the button "Import/resize" the converting begins
+The raw data points ("arrow_up" from example.svg) are to be inserted in the lower left text area. With the button "Import/resize" the converting begins
 and the result will be shown in the right bottom text area. 
+
+
+### Convert stop points from SVG
+
+![StopPoints](https://github.com/MatFX/DevelopmentTools/blob/master/StopArrayConvert.png)
+
+The stop point converter is needed when you want to draw a colorized gradient on any geometric shape.
+The values are to copy in the left text area ("Unbeannter_Verlauf_27" from example.svg). 
+After button "convert" is pressed, the will be builded a code-snippet and export it to the right text area.
+Remark: The opacity is after converting a part of the color hex string. 
+
 
 
 
