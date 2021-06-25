@@ -47,7 +47,7 @@ and the result will be shown in the right bottom text area.
 ![StopPoints](https://github.com/MatFX/DevelopmentTools/blob/master/StopArrayConvert.png)
 
 The stop point converter is needed when you want to draw a colorized gradient on any geometric shape.
-The values are to copy in the left text area ("Unbeannter_Verlauf_27" from example.svg). 
+The values are to copy in the left text area ("Unbenannter_Verlauf_27" from example.svg). 
 After button "convert" is pressed, the will be builded a code-snippet and export it to the right text area.
 Remark: The opacity is after converting a part of the color hex string. 
 
