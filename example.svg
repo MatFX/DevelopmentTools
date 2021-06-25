@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 170 80">
+  <defs>
+    <linearGradient id="Unbenannter_Verlauf_27" data-name="Unbenannter Verlauf 27" x1="85" y1="80.53543" x2="85" y2="6.67716" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.01156" stop-color="#dcdcdc" stop-opacity="0.17175"/>
+      <stop offset="0.07122" stop-color="#353533"/>
+      <stop offset="0.30517" stop-color="#4c4c4b" stop-opacity="0.88466"/>
+      <stop offset="0.62175" stop-color="#8e8e8d" stop-opacity="0.55925"/>
+      <stop offset="0.98425" stop-color="#fafafa" stop-opacity="0.02644"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="base_background" data-name="base background">
+    <rect width="170" height="80" rx="8" style="fill: #353533"/>
+  </g>
+  <g id="inlay">
+    <rect x="4" y="4" width="162" height="72" rx="4" style="fill: #5a5a5a"/>
+  </g>
+  <g id="arrow_up" data-name="arrow up">
+    <polygon points="59.175 38.816 33.944 13.585 8.713 38.816 24.961 38.816 24.961 63 42.927 63 42.927 38.816 59.175 38.816" style="fill: #fff"/>
+  </g>
+  <g id="inlay_shine" data-name="inlay shine">
+    <rect x="4" y="4" width="162" height="72" rx="4" style="fill: url(#Unbenannter_Verlauf_27)"/>
+  </g>
+</svg>

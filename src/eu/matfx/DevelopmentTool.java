@@ -29,7 +29,7 @@ public class DevelopmentTool extends Application
 			
 			ChangeGitConfigTab changeConfigTab = new ChangeGitConfigTab(primaryStage);
 			
-			tabPane.getTabs().addAll(changeConfigTab, new PolygonConverterTab(), new RoundRectangleTab(), new StopConverterTab());
+			tabPane.getTabs().addAll(changeConfigTab, new RoundRectangleTab(), new PolygonConverterTab(), new StopConverterTab());
 			
 			root.setCenter(tabPane);
 			
