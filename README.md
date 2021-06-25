@@ -25,4 +25,15 @@ is located under the example package folder.
 
 ### Create round rectangle
 
+![RoundRectangle](https://github.com/MatFX/DevelopmentTools/blob/master/RectangleConvert.png)
+
+First, you must define a scale basis. In the example.svg it's the layer called base_background. From this component 
+enter the width and height in the two total fields from the ui.
+The next step is to fill the other fields with the values from the rectangle to be converted("inlay" from the example.svg).
+
+
+
+
+
+
 
