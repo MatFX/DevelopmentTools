@@ -10,6 +10,7 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.SVGPath;
 
 
 
@@ -140,8 +141,7 @@ public class ExampleUI extends Region
 				false, CycleMethod.NO_CYCLE, stopMap.get(StopIndizes.INLAY_SHINE));
 		
 		inlay_shine.setFill(lg);
-		
-		
+
 		
 		
 		
