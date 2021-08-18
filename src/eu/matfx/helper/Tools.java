@@ -1,5 +1,15 @@
 package eu.matfx.helper;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class Tools 
 {
 	
@@ -66,6 +76,55 @@ public class Tools
     	'6' , '7' , '8' , '9' , 'A' , 'B' ,
     	'C' , 'D' , 'E' , 'F'
     };
+    
+    /**
+     * minimize oder maximize an image.
+     * <br>scalefactor 0.5f = 50% percent size from the original dimension
+     */
+	public static ImageView scaleImage(Image image, double scaleFactorX,  double scaleFactorY)
+	{
+		if(image == null || scaleFactorX == 0 || scaleFactorY == 0)
+			return new ImageView(image);
+		
+		
+		double newWidth = image.getWidth() * scaleFactorX;
+		double newHeight = image.getHeight() * scaleFactorY;
+		
+		ImageView returnValue = new ImageView(image);
+		
+		
+		returnValue.setFitWidth(newWidth);
+		returnValue.setFitHeight(newHeight);
+		return returnValue;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Object & Serializable> T copyObject(final T original) throws IllegalStateException
+	{
+		if (original == null)
+		{
+			return null;
+		}
+		
+		try (final ByteArrayOutputStream bout = new ByteArrayOutputStream(); final ObjectOutputStream objectout = new ObjectOutputStream(bout);)
+		{
+			objectout.writeObject(original);
+			// Object rekonstruieren
+			final byte[] objBytes = bout.toByteArray();
+
+			try (final ByteArrayInputStream bin = new ByteArrayInputStream(objBytes); final ObjectInputStream objectin = new ObjectInputStream(bin);)
+			{
+				return (T) objectin.readObject();
+			}
+		}
+
+		catch (final IOException | ClassNotFoundException e)
+		{
+			//Could not happen here
+		}
+		throw new IllegalStateException("copyobject failed to copy object of type " + original.getClass());
+
+	}
     
 
 }

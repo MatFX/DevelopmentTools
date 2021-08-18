@@ -1,6 +1,7 @@
 package eu.matfx;
 	
 import eu.matfx.changeConfig.ChangeGitConfigTab;
+import eu.matfx.colorizer.PNGColorizer;
 import eu.matfx.interfaces.ITabView;
 import eu.matfx.polygon.PolygonConverterTab;
 import eu.matfx.roundrectangle.RoundRectangleTab;
@@ -29,7 +30,7 @@ public class DevelopmentTool extends Application
 			
 			ChangeGitConfigTab changeConfigTab = new ChangeGitConfigTab(primaryStage);
 			
-			tabPane.getTabs().addAll(changeConfigTab, new RoundRectangleTab(), new PolygonConverterTab(), new StopConverterTab());
+			tabPane.getTabs().addAll(changeConfigTab, new RoundRectangleTab(), new PolygonConverterTab(), new StopConverterTab(), new PNGColorizer());
 			
 			root.setCenter(tabPane);
 			
