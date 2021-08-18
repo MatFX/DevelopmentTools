@@ -36,6 +36,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+/**
+ * content of the image colorizer tab
+ * @author m.goerlich
+ *
+ */
 public class PNGColorizerContent extends BorderPane
 {
 	

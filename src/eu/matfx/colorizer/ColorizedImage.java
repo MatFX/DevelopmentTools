@@ -10,6 +10,11 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
+/**
+ * the imageview in the table column
+ * @author m.goerlich
+ *
+ */
 public class ColorizedImage extends ImageView
 {
 	
@@ -21,6 +26,7 @@ public class ColorizedImage extends ImageView
 	{
 		this.orginalImage = imageFromIconFolder;
 		
+		//color property with change mechanism
 		colorProperty = new SimpleObjectProperty<Color>();
 		colorProperty.addListener(new ChangeListener<Color>() 
 		{
@@ -39,8 +45,12 @@ public class ColorizedImage extends ImageView
 		setNewColor(initialColor);
 	}
 
+	/**
+	 * Change the color of the current viewed image
+	 * @param newValue
+	 */
 	protected void colorizeImage(Color newValue) {
-		//dann koloriere es
+		
 
 		int maxX = (int) orginalImage.getWidth();
 		int maxY = (int) orginalImage.getHeight();
@@ -64,10 +74,19 @@ public class ColorizedImage extends ImageView
 		
 	}
 
+	/**
+	 * user changed the color; the TableImageRow triggered this method
+	 * @param newColorValue
+	 */
 	public void setNewColor(Color newColorValue) {
 		colorProperty.set(newColorValue);
 	}
 	
+	/**
+	 * user changed the selection of the combobox; the items of the tableview get the new image
+	 * <br>and every TableViewRow triggered this method.
+	 * @param newImage
+	 */
 	public void setNewOriginalImage(Image newImage)
 	{
 		this.orginalImage = newImage;

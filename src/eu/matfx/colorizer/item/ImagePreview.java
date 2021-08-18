@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import javafx.scene.image.Image;
 
+/**
+ * combobox content
+ * <br>. 
+ * @author m.goerlich
+ *
+ */
 public class ImagePreview implements Serializable 
 {
 	
