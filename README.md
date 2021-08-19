@@ -55,6 +55,26 @@ Remark: The opacity is after converting a part of the color hex string.
 
 ![StopPoints](https://github.com/MatFX/DevelopmentTools/blob/master/Screenshot_color_change.png)
 
+Sometimes I need monochrome images/icons in different colored version. In the past I used often any graphics software to change the color. 
+For the processing of a single icon, the amount of work required is still low. But this changes massively when many different icons have to be edited.
+That is the reason I builded a tiny tool to change comfortable the color of any PNG icon.
+
+In the project folder you will find an directory called icons. In this folder the to colorising PNG files will be drop down. 
+After starting the tool, the folder icons will be readed out and fill the selection of the ComboBox. The selected original icon shown left side of the ComboBox.
+With the Button "add color" a new row will be inserted in the TableView. In the column "color" you can change the color of the current selected icon.
+The color change is displayed in the column "preview". The last column "Suffix" shows the value that is appended to the file name after the export.
+The default suffix content is the hex value from the Color object, but the content of the column is changeable.
+
+The "delete color" button is to delete the selected column of the TableView. To export the current TableView, click the "export images" button. 
+The colored icons will be stored under the folder icons/exported_png.
+
+If you change the selection of the ComboBox, the current settings of the table are applied at the new selected monochrome icon.
+
+
+
+
+
+
 
 
 
