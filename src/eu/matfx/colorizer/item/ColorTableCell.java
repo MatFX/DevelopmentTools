@@ -21,13 +21,12 @@ public class ColorTableCell<T> extends TableCell<T, Color>
 		{
 		    final TableView<T> tableView = getTableView();
 		    tableView.getSelectionModel().select(getTableRow().getIndex());
-		    tableView.edit(tableView.getSelectionModel().getSelectedIndex(), column);	    
+		    tableView.edit(tableView.getSelectionModel().getSelectedIndex(), column);	  
 		});
-		this.colorPicker.valueProperty().addListener((observable, oldValue, newValue) -> 
-		{
-		    if(isEditing()) 
-		    	commitEdit(newValue);
-		});		
+
+		this.colorPicker.setOnHidden(event ->{
+			commitEdit(colorPicker.valueProperty().get());
+		});
 		setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
     }
  
@@ -37,9 +36,12 @@ public class ColorTableCell<T> extends TableCell<T, Color>
 		super.updateItem(item, empty);	
 	 
 		setText(null);	
-		if(empty) {	    
+		if(empty) 
+		{	    
 		    setGraphic(null);
-		} else {	    
+		} 
+		else 
+		{	    
 		    this.colorPicker.setValue(item);
 		    this.setGraphic(this.colorPicker);
 		} 
