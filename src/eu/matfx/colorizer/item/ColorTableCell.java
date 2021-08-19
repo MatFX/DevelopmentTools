@@ -13,8 +13,6 @@ public class ColorTableCell<T> extends TableCell<T, Color>
     public ColorTableCell(TableColumn<T, Color> column) 
     {
 		colorPicker = new ColorPicker();
-		colorPicker.editableProperty().bind(column.editableProperty());
-		colorPicker.disableProperty().bind(column.editableProperty().not());
 		colorPicker.setPrefWidth(Double.MAX_VALUE);
 		
 		this.colorPicker.setOnShowing(event -> 
