@@ -51,6 +51,10 @@ The values are to copy in the left text area ("Unbenannter_Verlauf_27" from exam
 After button "convert" is pressed, the will be builded a code-snippet and export it to the right text area.
 Remark: The opacity is after converting a part of the color hex string. 
 
+### Change color
+
+![StopPoints](https://github.com/MatFX/DevelopmentTools/blob/master/Screenshot_color_change.png)
+
 
 
 
