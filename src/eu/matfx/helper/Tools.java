@@ -1,5 +1,12 @@
 package eu.matfx.helper;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 public class Tools 
 {
 	
@@ -66,6 +73,35 @@ public class Tools
     	'6' , '7' , '8' , '9' , 'A' , 'B' ,
     	'C' , 'D' , 'E' , 'F'
     };
+    
+
+	@SuppressWarnings("unchecked")
+	public static <T extends Object & Serializable> T copyObject(final T original) throws IllegalStateException
+	{
+		if (original == null)
+		{
+			return null;
+		}
+		
+		try (final ByteArrayOutputStream bout = new ByteArrayOutputStream(); final ObjectOutputStream objectout = new ObjectOutputStream(bout);)
+		{
+			objectout.writeObject(original);
+			// Object rekonstruieren
+			final byte[] objBytes = bout.toByteArray();
+
+			try (final ByteArrayInputStream bin = new ByteArrayInputStream(objBytes); final ObjectInputStream objectin = new ObjectInputStream(bin);)
+			{
+				return (T) objectin.readObject();
+			}
+		}
+
+		catch (final IOException | ClassNotFoundException e)
+		{
+			//Could not happen here
+		}
+		throw new IllegalStateException("copyobject failed to copy object of type " + original.getClass());
+
+	}
     
 
 }
