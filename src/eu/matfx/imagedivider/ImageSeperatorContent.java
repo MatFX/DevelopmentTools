@@ -9,14 +9,11 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -35,9 +32,12 @@ public class ImageSeperatorContent extends BorderPane
 
 	private Properties storedConfiguration;
 	
-	//private String MAIN_FOLDER = "drawable-hdpi";
 	
-	private static String[] FOLDERS = new String[] { "drawable-mdpi", "drawable-hdpi", "drawable-xhdpi", "drawable-xxhdpi", "drawable-xxxhdpi", "drawable-xxxxhdpi"  };
+	/**
+	 * Export folders after conversion
+	 * <br>Every folder must corresponding with the SUFFIX array
+	 */
+	private static String[] FOLDERS = new String[] { "drawable-mdpi", "drawable-hdpi", "drawable-xhdpi", "drawable-xxhdpi", "drawable-xxxhdpi" };
 
 	private TextField importVerzeichnis;
 	
@@ -45,8 +45,10 @@ public class ImageSeperatorContent extends BorderPane
 	
 	private File importDirectory, exportDirectory;
 	
-	//Die Suffixe von den Dateien die relevant sind
-	private static final String[] SUFFIX = new String[]{"_mdpi", "_hdpi",  "_xhdpi",  "_xxhdpi", "_xxxhdpi", "_xxxxhdpi"};
+	/**
+	 * Suffix from the importing files. With conversion the name of files will be freed from the suffix and copied to the FOLDERS.
+	 */
+	private static final String[] SUFFIX = new String[]{"_mdpi", "_hdpi",  "_xhdpi",  "_xxhdpi", "_xxxhdpi"};
 	
 	public ImageSeperatorContent() 
 	{
@@ -62,6 +64,7 @@ public class ImageSeperatorContent extends BorderPane
 		
 		importVerzeichnis = new TextField();
 		importVerzeichnis.setText(DEFAULT_IMPORT);
+		
 		HBox.setHgrow(importVerzeichnis, Priority.ALWAYS);
 		
 		Button importDirectorySelection = new Button("Change import directory");
@@ -120,13 +123,17 @@ public class ImageSeperatorContent extends BorderPane
 	private void start() {
 		if(exportDirectory != null && importDirectory != null)
 		{
-			StringBuilder exportPath = new StringBuilder(exportVerzeichnis.getText());
-			StringBuilder importPath = new StringBuilder(importDirectory.getAbsolutePath());
-			exportPath.append(File.pathSeparator);
-			importPath.append(File.pathSeparator);
 			
+		
+			StringBuilder exportPath = new StringBuilder(exportVerzeichnis.getText());
+			StringBuilder importPath = new StringBuilder(importVerzeichnis.getText());
+
+			exportPath.append(File.separator);
+			importPath.append(File.separator);
+		
 			//wurschtle alle png Datein im Import durch
 			ArrayList<File> files = getPaths(new File(importPath.toString()), new ArrayList<File>()); 
+			System.out.println("files " + files.size());
 			if(files == null || files.size() < 0)
 				return;
 			
@@ -150,12 +157,12 @@ public class ImageSeperatorContent extends BorderPane
 					{
 						if(fileName.contains(SUFFIX[i]))
 						{
-							System.out.println("file vorher " + fileName);
 							//Dann verändere die Bezeichnung und verschiebe das file in das neue Verzeichnis
 							fileName = fileName.replace(SUFFIX[i], "");
-							System.out.println("file neue " + fileName);
+							
 							//folder array ist immer paarig mit suffix array
-							File newFile = new File(exportPath+FOLDERS[i]+fileName);
+							File newFile = new File(exportPath+FOLDERS[i]+File.separator+fileName);
+							
 							try {
 								Files.move(sourceFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 							} catch (IOException e) {
@@ -229,8 +236,6 @@ public class ImageSeperatorContent extends BorderPane
 		storedConfiguration = new Properties();
 		if (file.exists())
 		{
-			String tmpString = "";
-
 			//read
 			try (FileInputStream fis = new FileInputStream(file))
 			{
@@ -248,14 +253,10 @@ public class ImageSeperatorContent extends BorderPane
 				
 				if (storedConfiguration.getProperty("Folders") != null && storedConfiguration.getProperty("Folders") != "")
 				{
-					FOLDERS = tmpString.split("#");
+					//if(storedConfiguration.getProperty("Folders").contains("#"))
+					//	FOLDERS = tmpString.split("#");
 				}
-
-				//if (storedConfiguration.getProperty("MainFolder") != null && storedConfiguration.getProperty("MainFolder") != "")
-				//{
-				//	MAIN_FOLDER = storedConfiguration.getProperty("MainFolder");
-				//}
-
+				//System.out.println("folders " + FOLDERS.length);
 			}
 			catch (Exception e)
 			{
