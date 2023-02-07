@@ -37,7 +37,7 @@ public class ImageSeperatorContent extends BorderPane
 	 * Export folders after conversion
 	 * <br>Every folder must corresponding with the SUFFIX array
 	 */
-	private static String[] FOLDERS = new String[] { "drawable_mdpi", "drawable_hdpi", "drawable_xhdpi", "drawable_xxhdpi", "drawable_xxxhdpi" };
+	private static String[] FOLDERS = new String[] { "drawable_mdpi", "drawable_hdpi", "drawable_xhdpi", "drawable_xxhdpi", "drawable_xxxhdpi", "drawable_xxxxhdpi"  };
 
 	private TextField importVerzeichnis;
 	
