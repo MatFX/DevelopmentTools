@@ -48,7 +48,7 @@ public class ImageSeperatorContent extends BorderPane
 	/**
 	 * Suffix from the importing files. With conversion the name of files will be freed from the suffix and copied to the FOLDERS.
 	 */
-	private static final String[] SUFFIX = new String[]{"_mdpi", "_hdpi",  "_xhdpi",  "_xxhdpi", "_xxxhdpi"};
+	private static final String[] SUFFIX = new String[]{"_mdpi", "_hdpi",  "_xhdpi",  "_xxhdpi", "_xxxhdpi", "_xxxxhdpi"};
 	
 	public ImageSeperatorContent() 
 	{
